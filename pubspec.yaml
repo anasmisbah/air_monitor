@@ -12,6 +12,7 @@ dependencies:
   get: 4.6.5
   flutter: 
     sdk: flutter
+  flutter_screenutil: ^5.8.4
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
@@ -19,7 +20,13 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
   assets:
-    - assets/images
+    - assets/images/
   uses-material-design: true
 
