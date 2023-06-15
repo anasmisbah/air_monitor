@@ -10,6 +10,7 @@ abstract class Routes {
   static const DETAIL_SULFUR = _Paths.DETAIL_SULFUR;
   static const DETAIL_TEMPERATURE = _Paths.DETAIL_TEMPERATURE;
   static const ABOUT = _Paths.ABOUT;
+  static const INFORMATION = _Paths.INFORMATION;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const DETAIL_SULFUR = '/detail-sulfur';
   static const DETAIL_TEMPERATURE = '/detail-temperature';
   static const ABOUT = '/about';
+  static const INFORMATION = '/information';
 }

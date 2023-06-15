@@ -10,6 +10,8 @@ import '../modules/detail_temperature/bindings/detail_temperature_binding.dart';
 import '../modules/detail_temperature/views/detail_temperature_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/information/bindings/information_binding.dart';
+import '../modules/information/views/information_view.dart';
 import '../modules/introduction/bindings/introduction_binding.dart';
 import '../modules/introduction/views/introduction_view.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.ABOUT,
       page: () => const AboutView(),
       binding: AboutBinding(),
+    ),
+    GetPage(
+      name: _Paths.INFORMATION,
+      page: () => const InformationView(),
+      binding: InformationBinding(),
     ),
   ];
 }

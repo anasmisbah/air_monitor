@@ -14,6 +14,11 @@ class AppColor {
   static const Color buttonDisable = Color(0xFFCDCDCD);
   static const Color textDisable = Color(0xFF999999);
   static const Color text = Color(0xFF404040);
+
+  static const Color aqi_1 = Color(0xFFA2DC63);
+  static const Color aqi_2 = Color(0xFFFBD651);
+  static const Color aqi_3 = Color(0xFFFD9A57);
+  static const Color aqi_4 = Color(0xFFFF6A70);
   
 
 }
