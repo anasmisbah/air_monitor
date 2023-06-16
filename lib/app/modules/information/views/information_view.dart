@@ -24,9 +24,6 @@ class InformationView extends GetView<InformationController> {
             width: Get.width,
             decoration: BoxDecoration(
               color: AppColor.main2,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-              ),
             ),
           ),
           Expanded(
@@ -270,6 +267,65 @@ class InformationView extends GetView<InformationController> {
                                 ),
                                 Text(
                                   "Tingkat kualitas udara yang dapat meningkatkan resiko kesehatan pada sejumlah segmen populasi yang terpapar.",
+                                  style: TextStyle(
+                                    fontSize: 11.w,
+                                    color: AppColor.text,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10.w),
+                      margin: EdgeInsets.only(bottom: 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.w),
+                        color: AppColor.surface2,
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 80.w,
+                            height: 80.w,
+                            padding: EdgeInsets.all(8.w),
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset("assets/images/aqi_5.png"),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    color: AppColor.aqi_5,
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Text(
+                                    "BERBAHAYA ( >=301)",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: AppColor.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  "Tingkat kualitas udara yang dapat merugikan kesehatan serius pada populasi dan perlu penanganan cepat.",
                                   style: TextStyle(
                                     fontSize: 11.w,
                                     color: AppColor.text,
