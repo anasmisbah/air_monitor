@@ -1,9 +1,11 @@
 import 'package:air_monitor/app/consntans/color.dart';
+import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -43,7 +45,7 @@ class HomeView extends GetView<HomeController> {
                           height: 50,
                         ),
                         Text(
-                          "Selamat Pagi",
+                          "Selamat ${controller.greeting()}",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
@@ -53,217 +55,530 @@ class HomeView extends GetView<HomeController> {
                         SizedBox(
                           height: 15,
                         ),
-                        Container(
-                          padding: EdgeInsets.all(18),
-                          decoration: BoxDecoration(
-                            color: AppColor.surface2,
-                            borderRadius: BorderRadius.circular(28.w),
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Image.network(
-                                      "https://openweathermap.org/img/wn/04d@2x.png"),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                        Obx(() {
+                          switch (controller.uistate.value) {
+                            case UIState.loading:
+                              return Container(
+                                padding: EdgeInsets.all(18),
+                                decoration: BoxDecoration(
+                                  color: AppColor.surface2,
+                                  borderRadius: BorderRadius.circular(28.w),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          "May 16, 2023",
-                                          style: TextStyle(
-                                            fontSize: 12,
+                                        Container(
+                                          padding: EdgeInsets.all(10),
+                                          height: 100,
+                                          width: 100,
+                                          child: Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade300,
+                                            highlightColor:
+                                                Colors.grey.shade100,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: 10,
+                                                width: 35,
+                                                child: Shimmer.fromColors(
+                                                  baseColor:
+                                                      Colors.grey.shade300,
+                                                  highlightColor:
+                                                      Colors.grey.shade100,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                height: 18,
+                                                width: 80,
+                                                child: Shimmer.fromColors(
+                                                  baseColor:
+                                                      Colors.grey.shade300,
+                                                  highlightColor:
+                                                      Colors.grey.shade100,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              SizedBox(
+                                                height: 14,
+                                                width: 50,
+                                                child: Shimmer.fromColors(
+                                                  baseColor:
+                                                      Colors.grey.shade300,
+                                                  highlightColor:
+                                                      Colors.grey.shade100,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 40,
+                                          width: 90,
+                                          child: Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade300,
+                                            highlightColor:
+                                                Colors.grey.shade100,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      color: AppColor.main2,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/humidity_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 30,
+                                                    width: 45,
+                                                    child: Shimmer.fromColors(
+                                                      baseColor:
+                                                          Colors.grey.shade300,
+                                                      highlightColor:
+                                                          Colors.grey.shade100,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                "Humidity",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/visibility_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 30,
+                                                    width: 45,
+                                                    child: Shimmer.fromColors(
+                                                      baseColor:
+                                                          Colors.grey.shade300,
+                                                      highlightColor:
+                                                          Colors.grey.shade100,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                "Visibility",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/wind_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 30,
+                                                    width: 45,
+                                                    child: Shimmer.fromColors(
+                                                      baseColor:
+                                                          Colors.grey.shade300,
+                                                      highlightColor:
+                                                          Colors.grey.shade100,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                "Wind",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              );
+                            case UIState.success:
+                              return Container(
+                                padding: EdgeInsets.all(18),
+                                decoration: BoxDecoration(
+                                  color: AppColor.surface2,
+                                  borderRadius: BorderRadius.circular(28.w),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 60,
+                                          child: Image.network(
+                                              "https://openweathermap.org/img/wn/${controller.weatherModel.value.weather?.first.icon}@2x.png"),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "${controller.today()}",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                              Text(
+                                                "${controller.weatherModel.value.weather?.first.description}",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18.w,
+                                                ),
+                                              ),
+                                              Text(
+                                                "${controller.weatherModel.value.name}, Indonesia",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Text(
-                                          "Cloudy",
+                                          "${(controller.weatherModel.value.main?.temp)?.round()}\u00b0c",
                                           style: TextStyle(
+                                            fontSize: 32,
                                             fontWeight: FontWeight.w600,
-                                            fontSize: 18.w,
-                                          ),
-                                        ),
-                                        Text(
-                                          "Jakarta, Indonesia",
-                                          style: TextStyle(
-                                            fontSize: 12,
                                           ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Text(
-                                    "19\u00b0c",
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.w600,
+                                    Divider(
+                                      color: AppColor.main2,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                color: AppColor.main2,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 6,
-                                      horizontal: 8,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: AppColor.white.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Column(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              "assets/images/humidity_icon.png",
-                                            ),
-                                            SizedBox(
-                                              width: 4.w,
-                                            ),
-                                            Text(
-                                              "97",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18.w,
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/humidity_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  Text(
+                                                    "${controller.weatherModel.value.main?.humidity}",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 18.w,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 2,
+                                                  ),
+                                                  Text(
+                                                    "%",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 12.w,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Text(
-                                              "%",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12.w,
+                                              SizedBox(
+                                                height: 4,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                "Humidity",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        SizedBox(
-                                          height: 4,
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/visibility_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  Text(
+                                                    "${(controller.weatherModel.value.visibility! / 1000).round()}",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 18.w,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 2,
+                                                  ),
+                                                  Text(
+                                                    "km",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 12.w,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                "Visibility",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Text(
-                                          "Humidity",
-                                          style: TextStyle(fontSize: 12),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 6,
+                                            horizontal: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color:
+                                                AppColor.white.withOpacity(0.3),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  Image.asset(
+                                                    "assets/images/wind_icon.png",
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4.w,
+                                                  ),
+                                                  Text(
+                                                    "${(controller.weatherModel.value.wind?.speed)?.round()}",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 18.w,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 2,
+                                                  ),
+                                                  Text(
+                                                    "km/h",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 12.w,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                "Wind",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 6,
-                                      horizontal: 8,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: AppColor.white.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              "assets/images/visibility_icon.png",
-                                            ),
-                                            SizedBox(
-                                              width: 4.w,
-                                            ),
-                                            Text(
-                                              "7",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18.w,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Text(
-                                              "km",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12.w,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text(
-                                          "Visibility",
-                                          style: TextStyle(fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 6,
-                                      horizontal: 8,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: AppColor.white.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              "assets/images/wind_icon.png",
-                                            ),
-                                            SizedBox(
-                                              width: 4.w,
-                                            ),
-                                            Text(
-                                              "3",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18.w,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Text(
-                                              "km/h",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12.w,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text(
-                                          "Wind",
-                                          style: TextStyle(fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            default:
+                              return SizedBox();
+                          }
+                        })
                       ],
                     ),
                   ),

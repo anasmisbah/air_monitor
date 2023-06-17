@@ -1,0 +1,1 @@
+enum UIState { success, loading, empty, error, initial }

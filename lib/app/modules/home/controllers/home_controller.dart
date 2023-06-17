@@ -1,12 +1,15 @@
 import 'dart:developer';
 
+import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/modules/home/providers/home_provider.dart';
 import 'package:air_monitor/app/modules/home/weather_model_model.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
-  Rx<bool> isLoading = true.obs;
+  Rx<UIState> uistate = UIState.initial.obs;
   var weatherModel = WeatherModel().obs;
 
   @override
@@ -17,13 +20,35 @@ class HomeController extends GetxController {
   }
 
   void getData() async {
-    Position position = await _determinePosition();
-    log("${position.latitude}:${position.longitude}");
-    Response res =
-        await HomeProvider().getWeather(position.latitude, position.longitude);
-    weatherModel.value = WeatherModel.fromJson(res.body);
-    log(res.body.toString());
-    isLoading.value = false;
+    uistate.value = UIState.loading;
+    try {
+      Position position = await _determinePosition();
+      log("${position.latitude}:${position.longitude}");
+      Response res = await HomeProvider()
+          .getWeather(position.latitude, position.longitude);
+      weatherModel.value = WeatherModel.fromJson(res.body);
+      uistate.value = UIState.success;
+    } catch (e) {
+      uistate.value = UIState.error;
+    }
+  }
+
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Pagi';
+    }
+    if (hour < 17) {
+      return 'Siang';
+    }
+    return 'Malam';
+  }
+
+  String today() {
+    initializeDateFormatting('id_ID', null).then((_) => {});
+    var format = DateFormat.yMMMMd('id_ID');
+    var dateString = format.format(DateTime.now());
+    return dateString;
   }
 
   /// Determine the current position of the device.
