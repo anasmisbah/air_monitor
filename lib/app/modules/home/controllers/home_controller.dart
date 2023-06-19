@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/modules/home/providers/home_provider.dart';
 import 'package:air_monitor/app/modules/home/weather_model_model.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -16,6 +17,10 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     getData();
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+    AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
     super.onInit();
   }
 
