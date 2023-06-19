@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:workmanager/workmanager.dart';
 
 class HomeController extends GetxController {
   Rx<UIState> uistate = UIState.initial.obs;
@@ -17,11 +18,38 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     getData();
+    getBackgroundData();
+    super.onInit();
+  }
+
+  void getBackgroundData() async {
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
-flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-    AndroidFlutterLocalNotificationsPlugin>()?.requestPermission();
-    super.onInit();
+    var permisionStatus = await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestPermission();
+    if (permisionStatus != null) {
+      if (permisionStatus) {
+        Workmanager().registerOneOffTask(
+          "task-air-data",
+          "task-air-data",
+          initialDelay: Duration(seconds: 30),
+          constraints: Constraints(
+            networkType: NetworkType.connected,
+          ),
+        );
+        // Workmanager().registerPeriodicTask(
+        //   "task-air-data",
+        //   "task-air-data",
+        //   initialDelay: Duration(seconds: 90),
+        //   frequency: Duration(hours: 1),
+        //   constraints: Constraints(
+        //     networkType: NetworkType.connected,
+        //   ),
+        // );
+      }
+    }
   }
 
   void getData() async {

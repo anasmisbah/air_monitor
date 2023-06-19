@@ -64,6 +64,7 @@ class IntroductionView extends GetView<IntroductionController> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
+                      
                       Get.offNamed(Routes.HOME);
                     },
                     child: Text(

@@ -1,10 +1,13 @@
 import 'dart:developer';
 
+import 'package:air_monitor/app/modules/home/providers/home_provider.dart';
+import 'package:air_monitor/app/modules/home/weather_model_model.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:workmanager/workmanager.dart';
 
 class NotificationService {
-  
-static final FlutterLocalNotificationsPlugin _notificationPlugin =
+  static final FlutterLocalNotificationsPlugin _notificationPlugin =
       FlutterLocalNotificationsPlugin();
   static void initialize() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
@@ -18,20 +21,19 @@ static final FlutterLocalNotificationsPlugin _notificationPlugin =
         InitializationSettings(android: initializationSettingsAndroid);
     await _notificationPlugin.initialize(
       initializationSettings,
-      onDidReceiveNotificationResponse: (payload) {
-        
-      },
+      onDidReceiveNotificationResponse: (payload) {},
     );
 
     final NotificationAppLaunchDetails? notificationAppLaunchDetails =
         await _notificationPlugin.getNotificationAppLaunchDetails();
     if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
-      var selectedNotificationPayload = notificationAppLaunchDetails!.notificationResponse;
+      var selectedNotificationPayload =
+          notificationAppLaunchDetails!.notificationResponse;
       log("From local notif : " + selectedNotificationPayload.toString());
     }
   }
 
-  static void displayNotification() async {
+  static void displayNotification(String title,String body) async {
     try {
       final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       const AndroidNotificationDetails androidPlatformChannelSpecifics =
@@ -46,15 +48,12 @@ static final FlutterLocalNotificationsPlugin _notificationPlugin =
           NotificationDetails(android: androidPlatformChannelSpecifics);
       await _notificationPlugin.show(
         id,
-        'tes',
-        'kol',
+        title,
+        body,
         platformChannelSpecifics,
-        payload: 'tes',
       );
     } catch (e) {
       log(e.toString());
     }
   }
 }
-
-
