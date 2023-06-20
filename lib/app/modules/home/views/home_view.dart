@@ -1,3 +1,4 @@
+import 'package:air_monitor/app/consntans/air_quality_index.dart';
 import 'package:air_monitor/app/consntans/color.dart';
 import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/routes/app_pages.dart';
@@ -406,6 +407,88 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                     Row(
                                       mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 58.w,
+                                          height: 58.w,
+                                          padding: EdgeInsets.all(2.w),
+                                          decoration: BoxDecoration(
+                                            color: AppColor.white,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.asset(
+                                              "assets/images/aqi_1.png"),
+                                        ),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Kualitas Udara",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.all(2),
+                                                decoration: BoxDecoration(
+                                                  color: AppColor.aqi_1,
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                ),
+                                                child: Text(
+                                                  "${airQualityIndexData.first.status}",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: AppColor.white,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Text(
+                                          "${(controller.weatherModel.value.main?.temp)?.round()} Hc",
+                                          style: TextStyle(
+                                              fontSize: 32,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColor.text,
+                                              shadows: [
+                                                Shadow(
+                                                    // bottomLeft
+                                                    offset: Offset(-1.5, -1.5),
+                                                    color: AppColor.aqi_1
+                                                        .withOpacity(0.2)),
+                                                Shadow(
+                                                    // bottomRight
+                                                    offset: Offset(1.5, -1.5),
+                                                    color: AppColor.aqi_1
+                                                        .withOpacity(0.2)),
+                                                Shadow(
+                                                    // topRight
+                                                    offset: Offset(1.5, 1.5),
+                                                    color: AppColor.aqi_1
+                                                        .withOpacity(0.2)),
+                                                Shadow(
+                                                    // topLeft
+                                                    offset: Offset(-1.5, 1.5),
+                                                    color: AppColor.aqi_1
+                                                        .withOpacity(0.2)),
+                                              ]),
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      color: AppColor.main2,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
@@ -637,7 +720,10 @@ class HomeView extends GetView<HomeController> {
                               },
                               borderRadius: BorderRadius.circular(16.w),
                               child: Container(
-                                padding: EdgeInsets.all(16.w),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16.w,
+                                  vertical: 8.w,
+                                ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.w),
                                 ),
@@ -691,7 +777,8 @@ class HomeView extends GetView<HomeController> {
                               },
                               borderRadius: BorderRadius.circular(16.w),
                               child: Container(
-                                padding: EdgeInsets.all(16.w),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 8.w),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.w),
                                 ),
@@ -745,7 +832,8 @@ class HomeView extends GetView<HomeController> {
                               },
                               borderRadius: BorderRadius.circular(16.w),
                               child: Container(
-                                padding: EdgeInsets.all(16.w),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 8.w),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.w),
                                 ),
