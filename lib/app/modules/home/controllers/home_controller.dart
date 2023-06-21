@@ -16,7 +16,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     getData();
     getBackgroundData();
     super.onInit();
@@ -34,7 +33,7 @@ class HomeController extends GetxController {
         Workmanager().registerOneOffTask(
           "task-air-data",
           "task-air-data",
-          initialDelay: Duration(seconds: 30),
+          initialDelay: const Duration(seconds: 30),
           constraints: Constraints(
             networkType: NetworkType.connected,
           ),

@@ -21,7 +21,7 @@ class DetailSulfurView extends GetView<DetailSulfurController> {
         children: [
           Container(
             padding: EdgeInsets.all(16.w),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColor.main2,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40),
@@ -30,7 +30,7 @@ class DetailSulfurView extends GetView<DetailSulfurController> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(18),
+                  padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
                     color: AppColor.surface2,
                     borderRadius: BorderRadius.circular(28.w),
@@ -44,7 +44,7 @@ class DetailSulfurView extends GetView<DetailSulfurController> {
                             "assets/images/so2.png",
                             width: 56,
                           ),
-                          Expanded(
+                          const Expanded(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -71,10 +71,10 @@ class DetailSulfurView extends GetView<DetailSulfurController> {
                           ),
                         ],
                       ),
-                      Divider(
+                      const Divider(
                         color: AppColor.main2,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Pembaharuan Terakhir"),
@@ -91,11 +91,11 @@ class DetailSulfurView extends GetView<DetailSulfurController> {
             child: Container(
               color: AppColor.main2,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20,
                   horizontal: 16,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),

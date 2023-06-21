@@ -24,7 +24,7 @@ void main() {
 
   runApp(
     ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       builder: (context, child) => GetMaterialApp(
         title: "Application",
         initialRoute: Routes.SPLASH_SCREEN,

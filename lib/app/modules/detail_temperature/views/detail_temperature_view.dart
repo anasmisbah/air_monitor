@@ -21,7 +21,7 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
         children: [
           Container(
             padding: EdgeInsets.all(16.w),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColor.main2,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40),
@@ -30,7 +30,7 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(18),
+                  padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
                     color: AppColor.surface2,
                     borderRadius: BorderRadius.circular(28.w),
@@ -49,7 +49,7 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
                                     "assets/images/thermometer.png",
                                     width: 45,
                                   ),
-                                  Row(
+                                  const Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
@@ -75,7 +75,7 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
                                 ],
                               ),
                             ),
-                            VerticalDivider(
+                            const VerticalDivider(
                               color: AppColor.main2,
                             ),
                             Expanded(
@@ -85,7 +85,7 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
                                     "assets/images/humi.png",
                                     width: 45,
                                   ),
-                                  Row(
+                                  const Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
@@ -114,10 +114,10 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
                           ],
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         color: AppColor.main2,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Pembaharuan Terakhir"),
@@ -134,11 +134,11 @@ class DetailTemperatureView extends GetView<DetailTemperatureController> {
             child: Container(
               color: AppColor.main2,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20,
                   horizontal: 16,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),

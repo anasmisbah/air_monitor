@@ -23,7 +23,7 @@ class InformationView extends GetView<InformationController> {
           Container(
             padding: EdgeInsets.all(4.w),
             width: Get.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColor.main2,
             ),
           ),
@@ -31,11 +31,11 @@ class InformationView extends GetView<InformationController> {
             child: Container(
               color: AppColor.main2,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20,
                   horizontal: 16,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),
@@ -47,7 +47,7 @@ class InformationView extends GetView<InformationController> {
                         .map(
                           (airQualityIndex) => Container(
                             padding: EdgeInsets.all(10.w),
-                            margin: EdgeInsets.only(bottom: 15),
+                            margin: const EdgeInsets.only(bottom: 15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16.w),
                               color: AppColor.surface2,
@@ -59,13 +59,13 @@ class InformationView extends GetView<InformationController> {
                                   width: 80.w,
                                   height: 80.w,
                                   padding: EdgeInsets.all(8.w),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: AppColor.white,
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(airQualityIndex.image),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
                                 Expanded(
@@ -75,7 +75,7 @@ class InformationView extends GetView<InformationController> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.all(2),
+                                        padding: const EdgeInsets.all(2),
                                         decoration: BoxDecoration(
                                           color: airQualityIndex.color,
                                           borderRadius:
@@ -83,14 +83,14 @@ class InformationView extends GetView<InformationController> {
                                         ),
                                         child: Text(
                                           "${airQualityIndex.status} ( ${airQualityIndex.value})",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 13,
                                             color: AppColor.white,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 4,
                                       ),
                                       Text(

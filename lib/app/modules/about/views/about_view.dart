@@ -22,7 +22,7 @@ class AboutView extends GetView<AboutController> {
           Container(
             padding: EdgeInsets.all(4.w),
             width: Get.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColor.main2,
             ),
           ),
@@ -30,11 +30,11 @@ class AboutView extends GetView<AboutController> {
             child: Container(
               color: AppColor.main2,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20,
                   horizontal: 16,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),
@@ -43,7 +43,7 @@ class AboutView extends GetView<AboutController> {
                 child: Column(
                   children: [
                     Image.asset("assets/images/logo.png"),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -65,7 +65,7 @@ class AboutView extends GetView<AboutController> {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: AppColor.main3,
                     ),
                     Text(

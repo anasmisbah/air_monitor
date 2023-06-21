@@ -19,7 +19,7 @@ class HomeView extends GetView<HomeController> {
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColor.main2,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
@@ -38,29 +38,29 @@ class HomeView extends GetView<HomeController> {
                     child: Image.asset("assets/images/right_cloud.png"),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
                         Text(
                           "Selamat ${controller.greeting()}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                             color: AppColor.white,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Obx(() {
                           switch (controller.uistate.value) {
                             case UIState.loading:
                               return Container(
-                                padding: EdgeInsets.all(18),
+                                padding: const EdgeInsets.all(18),
                                 decoration: BoxDecoration(
                                   color: AppColor.surface2,
                                   borderRadius: BorderRadius.circular(28.w),
@@ -72,7 +72,7 @@ class HomeView extends GetView<HomeController> {
                                           MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.all(10),
+                                          padding: const EdgeInsets.all(10),
                                           height: 100,
                                           width: 100,
                                           child: Shimmer.fromColors(
@@ -111,7 +111,7 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 10,
                                               ),
                                               SizedBox(
@@ -132,7 +132,7 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 10,
                                               ),
                                               SizedBox(
@@ -174,7 +174,7 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ],
                                     ),
-                                    Divider(
+                                    const Divider(
                                       color: AppColor.main2,
                                     ),
                                     Row(
@@ -182,7 +182,7 @@ class HomeView extends GetView<HomeController> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -225,10 +225,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Humidity",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -236,7 +236,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -279,10 +279,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Visibility",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -290,7 +290,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -333,10 +333,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Wind",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -350,7 +350,7 @@ class HomeView extends GetView<HomeController> {
                               );
                             case UIState.success:
                               return Container(
-                                padding: EdgeInsets.all(18),
+                                padding: const EdgeInsets.all(18),
                                 decoration: BoxDecoration(
                                   color: AppColor.surface2,
                                   borderRadius: BorderRadius.circular(28.w),
@@ -372,8 +372,8 @@ class HomeView extends GetView<HomeController> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                "${controller.today()}",
-                                                style: TextStyle(
+                                                controller.today(),
+                                                style: const TextStyle(
                                                   fontSize: 12,
                                                 ),
                                               ),
@@ -386,7 +386,7 @@ class HomeView extends GetView<HomeController> {
                                               ),
                                               Text(
                                                 "${controller.weatherModel.value.name}, Indonesia",
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 12,
                                                 ),
                                               ),
@@ -395,14 +395,14 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                         Text(
                                           "${(controller.weatherModel.value.main?.temp)?.round()}\u00b0c",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 32,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Divider(
+                                    const Divider(
                                       color: AppColor.main2,
                                     ),
                                     Row(
@@ -413,14 +413,14 @@ class HomeView extends GetView<HomeController> {
                                           width: 58.w,
                                           height: 58.w,
                                           padding: EdgeInsets.all(2.w),
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: AppColor.white,
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
                                               "assets/images/aqi_1.png"),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 6,
                                         ),
                                         Expanded(
@@ -428,22 +428,22 @@ class HomeView extends GetView<HomeController> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
+                                              const Text(
                                                 "Kualitas Udara",
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                 ),
                                               ),
                                               Container(
-                                                padding: EdgeInsets.all(2),
+                                                padding: const EdgeInsets.all(2),
                                                 decoration: BoxDecoration(
                                                   color: AppColor.aqi_1,
                                                   borderRadius:
                                                       BorderRadius.circular(4),
                                                 ),
                                                 child: Text(
-                                                  "${airQualityIndexData.first.status}",
-                                                  style: TextStyle(
+                                                  airQualityIndexData.first.status,
+                                                  style: const TextStyle(
                                                     fontSize: 16,
                                                     color: AppColor.white,
                                                     fontWeight: FontWeight.w600,
@@ -462,29 +462,29 @@ class HomeView extends GetView<HomeController> {
                                               shadows: [
                                                 Shadow(
                                                     // bottomLeft
-                                                    offset: Offset(-1.5, -1.5),
+                                                    offset: const Offset(-1.5, -1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // bottomRight
-                                                    offset: Offset(1.5, -1.5),
+                                                    offset: const Offset(1.5, -1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // topRight
-                                                    offset: Offset(1.5, 1.5),
+                                                    offset: const Offset(1.5, 1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // topLeft
-                                                    offset: Offset(-1.5, 1.5),
+                                                    offset: const Offset(-1.5, 1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                               ]),
                                         ),
                                       ],
                                     ),
-                                    Divider(
+                                    const Divider(
                                       color: AppColor.main2,
                                     ),
                                     Row(
@@ -492,7 +492,7 @@ class HomeView extends GetView<HomeController> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -522,7 +522,7 @@ class HomeView extends GetView<HomeController> {
                                                       fontSize: 18.w,
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 2,
                                                   ),
                                                   Text(
@@ -535,10 +535,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Humidity",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -546,7 +546,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -576,7 +576,7 @@ class HomeView extends GetView<HomeController> {
                                                       fontSize: 18.w,
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 2,
                                                   ),
                                                   Text(
@@ -589,10 +589,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Visibility",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -600,7 +600,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             vertical: 6,
                                             horizontal: 8,
                                           ),
@@ -630,7 +630,7 @@ class HomeView extends GetView<HomeController> {
                                                       fontSize: 18.w,
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 2,
                                                   ),
                                                   Text(
@@ -643,10 +643,10 @@ class HomeView extends GetView<HomeController> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 4,
                                               ),
-                                              Text(
+                                              const Text(
                                                 "Wind",
                                                 style: TextStyle(fontSize: 12),
                                               ),
@@ -659,7 +659,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               );
                             default:
-                              return SizedBox();
+                              return const SizedBox();
                           }
                         })
                       ],
@@ -676,11 +676,11 @@ class HomeView extends GetView<HomeController> {
             Container(
               color: AppColor.main2,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 20,
                   horizontal: 16,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),
@@ -697,14 +697,14 @@ class HomeView extends GetView<HomeController> {
                         color: AppColor.text,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Column(
                       children: [
                         // CO
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             bottom: 8,
                           ),
                           decoration: BoxDecoration(
@@ -733,14 +733,14 @@ class HomeView extends GetView<HomeController> {
                                       width: 56.w,
                                       height: 56.w,
                                       padding: EdgeInsets.all(8.w),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         shape: BoxShape.circle,
                                       ),
                                       child:
                                           Image.asset("assets/images/co.png"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     Expanded(
@@ -761,7 +761,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         // SO2
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             bottom: 8,
                           ),
                           decoration: BoxDecoration(
@@ -788,14 +788,14 @@ class HomeView extends GetView<HomeController> {
                                       width: 56.w,
                                       height: 56.w,
                                       padding: EdgeInsets.all(8.w),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         shape: BoxShape.circle,
                                       ),
                                       child:
                                           Image.asset("assets/images/so2.png"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     Expanded(
@@ -816,7 +816,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         // TEMP
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             bottom: 8,
                           ),
                           decoration: BoxDecoration(
@@ -843,14 +843,14 @@ class HomeView extends GetView<HomeController> {
                                       width: 56.w,
                                       height: 56.w,
                                       padding: EdgeInsets.all(8.w),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         shape: BoxShape.circle,
                                       ),
                                       child:
                                           Image.asset("assets/images/temp.png"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
                                     Expanded(
@@ -894,14 +894,14 @@ class HomeView extends GetView<HomeController> {
                                             width: 40.w,
                                             height: 40.w,
                                             padding: EdgeInsets.all(8.w),
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: AppColor.white,
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.asset(
                                                 "assets/images/about.png"),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8,
                                           ),
                                           Expanded(
@@ -921,7 +921,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Expanded(
@@ -946,14 +946,14 @@ class HomeView extends GetView<HomeController> {
                                             width: 40.w,
                                             height: 40.w,
                                             padding: EdgeInsets.all(8.w),
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: AppColor.white,
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.asset(
                                                 "assets/images/information.png"),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 8,
                                           ),
                                           Expanded(

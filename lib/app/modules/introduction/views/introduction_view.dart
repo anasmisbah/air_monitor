@@ -15,7 +15,7 @@ class IntroductionView extends GetView<IntroductionController> {
       body: Container(
         width: Get.width,
         height: Get.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bg_splash.png"),
             fit: BoxFit.cover,
@@ -48,14 +48,14 @@ class IntroductionView extends GetView<IntroductionController> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 66,
                 ),
                 Image.asset(
                   "assets/images/ilustration1.png",
                   fit: BoxFit.cover,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ConstrainedBox(
@@ -67,18 +67,18 @@ class IntroductionView extends GetView<IntroductionController> {
                       
                       Get.offNamed(Routes.HOME);
                     },
-                    child: Text(
-                      "Mulai",
-                      style: TextStyle(
-                        fontSize: 16.w,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColor.main,
                       padding: EdgeInsets.symmetric(vertical: 12.w),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      "Mulai",
+                      style: TextStyle(
+                        fontSize: 16.w,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),

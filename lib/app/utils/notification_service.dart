@@ -1,10 +1,6 @@
 import 'dart:developer';
 
-import 'package:air_monitor/app/modules/home/providers/home_provider.dart';
-import 'package:air_monitor/app/modules/home/weather_model_model.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:workmanager/workmanager.dart';
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _notificationPlugin =
@@ -17,7 +13,7 @@ class NotificationService {
     // TODO ADD IOS CONFIG HERE
     // =======================
 
-    final InitializationSettings initializationSettings =
+    const InitializationSettings initializationSettings =
         InitializationSettings(android: initializationSettingsAndroid);
     await _notificationPlugin.initialize(
       initializationSettings,
@@ -29,7 +25,7 @@ class NotificationService {
     if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
       var selectedNotificationPayload =
           notificationAppLaunchDetails!.notificationResponse;
-      log("From local notif : " + selectedNotificationPayload.toString());
+      log("From local notif : $selectedNotificationPayload");
     }
   }
 
