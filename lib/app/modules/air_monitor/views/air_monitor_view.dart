@@ -478,7 +478,7 @@ class AirMonitorView extends GetView<AirMonitorController> {
                                     ),
                                   ),
                                   Text(
-                                    "${controller.altitude.value}",
+                                    "${controller.hpa.value}",
                                     style: TextStyle(
                                       fontSize: 24.w,
                                       color: AppColor.text,
