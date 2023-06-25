@@ -20,7 +20,7 @@ class AirQualityIndex {
 }
 
 const bearerToken =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc3Mjk5MDYsImlhdCI6MTY4NzcyMjcwNiwicm9sZSI6InVzZXIiLCJ1c3IiOiJLZWxhc0tpbGF0In0.9DL8Xkq26YH4vOXdnduT2HZex4BPAvhdoBokws7ZN-Y";
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc3MzcwMTEsImlhdCI6MTY4NzcyOTgxMSwicm9sZSI6InVzZXIiLCJ1c3IiOiJLZWxhc0tpbGF0In0.opcij7oXTIP6hpv6sF7GIGIcQLMR1xo7JBCwbJjtLAQ";
 
 List<AirQualityIndex> airQualityIndexData = [
   AirQualityIndex(
