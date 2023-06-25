@@ -1,4 +1,3 @@
-import 'package:air_monitor/app/consntans/air_quality_index.dart';
 import 'package:air_monitor/app/consntans/color.dart';
 import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/routes/app_pages.dart';
@@ -177,174 +176,6 @@ class HomeView extends GetView<HomeController> {
                                     const Divider(
                                       color: AppColor.main2,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/humidity_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 30,
-                                                    width: 45,
-                                                    child: Shimmer.fromColors(
-                                                      baseColor:
-                                                          Colors.grey.shade300,
-                                                      highlightColor:
-                                                          Colors.grey.shade100,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Humidity",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/visibility_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 30,
-                                                    width: 45,
-                                                    child: Shimmer.fromColors(
-                                                      baseColor:
-                                                          Colors.grey.shade300,
-                                                      highlightColor:
-                                                          Colors.grey.shade100,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Visibility",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/wind_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 30,
-                                                    width: 45,
-                                                    child: Shimmer.fromColors(
-                                                      baseColor:
-                                                          Colors.grey.shade300,
-                                                      highlightColor:
-                                                          Colors.grey.shade100,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Wind",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    )
                                   ],
                                 ),
                               );
@@ -394,7 +225,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Text(
-                                          "${(controller.weatherModel.value.main?.temp)?.round()}\u00b0c",
+                                          "${(controller.temp.value)}\u00b0c",
                                           style: const TextStyle(
                                             fontSize: 32,
                                             fontWeight: FontWeight.w600,
@@ -417,8 +248,11 @@ class HomeView extends GetView<HomeController> {
                                             color: AppColor.white,
                                             shape: BoxShape.circle,
                                           ),
-                                          child: Image.asset(
-                                              "assets/images/aqi_1.png"),
+                                          child: Image.asset(controller
+                                                  .airQualityIndexModel
+                                                  .value
+                                                  .image ??
+                                              ""),
                                         ),
                                         const SizedBox(
                                           width: 6,
@@ -435,14 +269,19 @@ class HomeView extends GetView<HomeController> {
                                                 ),
                                               ),
                                               Container(
-                                                padding: const EdgeInsets.all(2),
+                                                padding:
+                                                    const EdgeInsets.all(2),
                                                 decoration: BoxDecoration(
                                                   color: AppColor.aqi_1,
                                                   borderRadius:
                                                       BorderRadius.circular(4),
                                                 ),
                                                 child: Text(
-                                                  airQualityIndexData.first.status,
+                                                  controller
+                                                          .airQualityIndexModel
+                                                          .value
+                                                          .status ??
+                                                      "-",
                                                   style: const TextStyle(
                                                     fontSize: 16,
                                                     color: AppColor.white,
@@ -454,7 +293,7 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                         ),
                                         Text(
-                                          "${(controller.weatherModel.value.main?.temp)?.round()} Hc",
+                                          "${(controller.airQualityIndexModel.value.aqi)}",
                                           style: TextStyle(
                                               fontSize: 32,
                                               fontWeight: FontWeight.w600,
@@ -462,202 +301,219 @@ class HomeView extends GetView<HomeController> {
                                               shadows: [
                                                 Shadow(
                                                     // bottomLeft
-                                                    offset: const Offset(-1.5, -1.5),
+                                                    offset: const Offset(
+                                                        -1.5, -1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // bottomRight
-                                                    offset: const Offset(1.5, -1.5),
+                                                    offset:
+                                                        const Offset(1.5, -1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // topRight
-                                                    offset: const Offset(1.5, 1.5),
+                                                    offset:
+                                                        const Offset(1.5, 1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                                 Shadow(
                                                     // topLeft
-                                                    offset: const Offset(-1.5, 1.5),
+                                                    offset:
+                                                        const Offset(-1.5, 1.5),
                                                     color: AppColor.aqi_1
                                                         .withOpacity(0.2)),
                                               ]),
                                         ),
                                       ],
                                     ),
-                                    const Divider(
-                                      color: AppColor.main2,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/humidity_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  Text(
-                                                    "${controller.weatherModel.value.main?.humidity}",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 18.w,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 2,
-                                                  ),
-                                                  Text(
-                                                    "%",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 12.w,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Humidity",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/visibility_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  Text(
-                                                    "${(controller.weatherModel.value.visibility! / 1000).round()}",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 18.w,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 2,
-                                                  ),
-                                                  Text(
-                                                    "km",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 12.w,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Visibility",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 6,
-                                            horizontal: 8,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColor.white.withOpacity(0.3),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/wind_icon.png",
-                                                  ),
-                                                  SizedBox(
-                                                    width: 4.w,
-                                                  ),
-                                                  Text(
-                                                    "${(controller.weatherModel.value.wind?.speed)?.round()}",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 18.w,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 2,
-                                                  ),
-                                                  Text(
-                                                    "km/h",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 12.w,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 4,
-                                              ),
-                                              const Text(
-                                                "Wind",
-                                                style: TextStyle(fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    )
+                                    // const Divider(
+                                    //   color: AppColor.main2,
+                                    // ),
+                                    // Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.spaceBetween,
+                                    //   children: [
+                                    //     Container(
+                                    //       padding: const EdgeInsets.symmetric(
+                                    //         vertical: 6,
+                                    //         horizontal: 8,
+                                    //       ),
+                                    //       decoration: BoxDecoration(
+                                    //         color:
+                                    //             AppColor.white.withOpacity(0.3),
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(8),
+                                    //       ),
+                                    //       child: Column(
+                                    //         children: [
+                                    //           Row(
+                                    //             crossAxisAlignment:
+                                    //                 CrossAxisAlignment.end,
+                                    //             children: [
+                                    //               Image.asset(
+                                    //                 "assets/images/humidity_icon.png",
+                                    //               ),
+                                    //               SizedBox(
+                                    //                 width: 4.w,
+                                    //               ),
+                                    //               Text(
+                                    //                 "${controller.weatherModel.value.main?.humidity}",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 18.w,
+                                    //                 ),
+                                    //               ),
+                                    //               const SizedBox(
+                                    //                 width: 2,
+                                    //               ),
+                                    //               Text(
+                                    //                 "%",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 12.w,
+                                    //                 ),
+                                    //               ),
+                                    //             ],
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 4,
+                                    //           ),
+                                    //           const Text(
+                                    //             "Humidity",
+                                    //             style: TextStyle(fontSize: 12),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ),
+                                    //     Container(
+                                    //       padding: const EdgeInsets.symmetric(
+                                    //         vertical: 6,
+                                    //         horizontal: 8,
+                                    //       ),
+                                    //       decoration: BoxDecoration(
+                                    //         color:
+                                    //             AppColor.white.withOpacity(0.3),
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(8),
+                                    //       ),
+                                    //       child: Column(
+                                    //         children: [
+                                    //           Row(
+                                    //             crossAxisAlignment:
+                                    //                 CrossAxisAlignment.end,
+                                    //             children: [
+                                    //               Image.asset(
+                                    //                 "assets/images/visibility_icon.png",
+                                    //               ),
+                                    //               SizedBox(
+                                    //                 width: 4.w,
+                                    //               ),
+                                    //               Text(
+                                    //                 "${(controller.weatherModel.value.visibility! / 1000).round()}",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 18.w,
+                                    //                 ),
+                                    //               ),
+                                    //               const SizedBox(
+                                    //                 width: 2,
+                                    //               ),
+                                    //               Text(
+                                    //                 "km",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 12.w,
+                                    //                 ),
+                                    //               ),
+                                    //             ],
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 4,
+                                    //           ),
+                                    //           const Text(
+                                    //             "Visibility",
+                                    //             style: TextStyle(fontSize: 12),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ),
+                                    //     Container(
+                                    //       padding: const EdgeInsets.symmetric(
+                                    //         vertical: 6,
+                                    //         horizontal: 8,
+                                    //       ),
+                                    //       decoration: BoxDecoration(
+                                    //         color:
+                                    //             AppColor.white.withOpacity(0.3),
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(8),
+                                    //       ),
+                                    //       child: Column(
+                                    //         children: [
+                                    //           Row(
+                                    //             crossAxisAlignment:
+                                    //                 CrossAxisAlignment.end,
+                                    //             children: [
+                                    //               Image.asset(
+                                    //                 "assets/images/wind_icon.png",
+                                    //               ),
+                                    //               SizedBox(
+                                    //                 width: 4.w,
+                                    //               ),
+                                    //               Text(
+                                    //                 "${(controller.weatherModel.value.wind?.speed)?.round()}",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 18.w,
+                                    //                 ),
+                                    //               ),
+                                    //               const SizedBox(
+                                    //                 width: 2,
+                                    //               ),
+                                    //               Text(
+                                    //                 "km/h",
+                                    //                 style: TextStyle(
+                                    //                   fontWeight:
+                                    //                       FontWeight.w600,
+                                    //                   fontSize: 12.w,
+                                    //                 ),
+                                    //               ),
+                                    //             ],
+                                    //           ),
+                                    //           const SizedBox(
+                                    //             height: 4,
+                                    //           ),
+                                    //           const Text(
+                                    //             "Wind",
+                                    //             style: TextStyle(fontSize: 12),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // )
                                   ],
                                 ),
                               );
+                            case UIState.error:
+                              return Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "maaf Terjadi Kesalahan, Silahkan buka ulang kembali",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: AppColor.white),
+                                    ),
+                                  )
+                                ],
+                              );
+
                             default:
                               return const SizedBox();
                           }
@@ -702,7 +558,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                     Column(
                       children: [
-                        // CO
+                        // Air Monitor
                         Container(
                           margin: const EdgeInsets.only(
                             bottom: 8,
@@ -716,7 +572,7 @@ class HomeView extends GetView<HomeController> {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                Get.toNamed(Routes.DETAIL_CARBON);
+                                Get.toNamed(Routes.AIR_MONITOR);
                               },
                               borderRadius: BorderRadius.circular(16.w),
                               child: Container(
@@ -737,125 +593,15 @@ class HomeView extends GetView<HomeController> {
                                         color: AppColor.white,
                                         shape: BoxShape.circle,
                                       ),
-                                      child:
-                                          Image.asset("assets/images/co.png"),
+                                      child: Image.asset(
+                                          "assets/images/factory.png"),
                                     ),
                                     const SizedBox(
                                       width: 15,
                                     ),
                                     Expanded(
                                       child: Text(
-                                        "Carbon Monoksida (CO)",
-                                        style: TextStyle(
-                                          fontSize: 16.w,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColor.text,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        // SO2
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColor.surface2,
-                            borderRadius: BorderRadius.circular(16.w),
-                          ),
-                          child: Material(
-                            borderRadius: BorderRadius.circular(16.w),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                Get.toNamed(Routes.DETAIL_SULFUR);
-                              },
-                              borderRadius: BorderRadius.circular(16.w),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 16.w, vertical: 8.w),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16.w),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 56.w,
-                                      height: 56.w,
-                                      padding: EdgeInsets.all(8.w),
-                                      decoration: const BoxDecoration(
-                                        color: AppColor.white,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child:
-                                          Image.asset("assets/images/so2.png"),
-                                    ),
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        "Sulfur Dioksida (SO2)",
-                                        style: TextStyle(
-                                          fontSize: 16.w,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColor.text,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        // TEMP
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColor.surface2,
-                            borderRadius: BorderRadius.circular(16.w),
-                          ),
-                          child: Material(
-                            borderRadius: BorderRadius.circular(16.w),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                Get.toNamed(Routes.DETAIL_TEMPERATURE);
-                              },
-                              borderRadius: BorderRadius.circular(16.w),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 16.w, vertical: 8.w),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16.w),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 56.w,
-                                      height: 56.w,
-                                      padding: EdgeInsets.all(8.w),
-                                      decoration: const BoxDecoration(
-                                        color: AppColor.white,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child:
-                                          Image.asset("assets/images/temp.png"),
-                                    ),
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        "Suhu & Kelembapan",
+                                        "Monitor Udara",
                                         style: TextStyle(
                                           fontSize: 16.w,
                                           fontWeight: FontWeight.w600,

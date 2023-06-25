@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:air_monitor/app/consntans/air_quality_index.dart';
 import 'package:air_monitor/app/consntans/ui_state.dart';
 import 'package:air_monitor/app/modules/home/providers/home_provider.dart';
 import 'package:air_monitor/app/modules/home/weather_model_model.dart';
@@ -13,11 +14,14 @@ import 'package:workmanager/workmanager.dart';
 class HomeController extends GetxController {
   Rx<UIState> uistate = UIState.initial.obs;
   var weatherModel = WeatherModel().obs;
+  var airQualityIndexModel = AirQualityIndex().obs;
+
+  RxInt temp = 0.obs;
 
   @override
   void onInit() {
     getData();
-    getBackgroundData();
+    // getBackgroundData();
     super.onInit();
   }
 
@@ -59,10 +63,40 @@ class HomeController extends GetxController {
       Response res = await HomeProvider()
           .getWeather(position.latitude, position.longitude);
       weatherModel.value = WeatherModel.fromJson(res.body);
+
+      var aqi = await HomeProvider().getAqi();
+      setAirQuality(aqi.body);
+
+      var resTemp = await HomeProvider().getTemp();
+      temp.value = (resTemp.body as double).round();
+
       uistate.value = UIState.success;
     } catch (e) {
+      log(e.toString());
       uistate.value = UIState.error;
     }
+  }
+
+  void setAirQuality(double aqi) {
+    switch (aqi.round()) {
+      case <= 50:
+        airQualityIndexModel.value = airQualityIndexData[0];
+        break;
+      case <= 100:
+        airQualityIndexModel.value = airQualityIndexData[1];
+        break;
+      case <= 200:
+        airQualityIndexModel.value = airQualityIndexData[2];
+        break;
+      case <= 300:
+        airQualityIndexModel.value = airQualityIndexData[3];
+        break;
+      case >= 301:
+        airQualityIndexModel.value = airQualityIndexData[4];
+        break;
+      default:
+    }
+    airQualityIndexModel.value.aqi = aqi.round();
   }
 
   String greeting() {

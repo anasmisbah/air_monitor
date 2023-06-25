@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/about/bindings/about_binding.dart';
 import '../modules/about/views/about_view.dart';
+import '../modules/air_monitor/bindings/air_monitor_binding.dart';
+import '../modules/air_monitor/views/air_monitor_view.dart';
 import '../modules/detail_carbon/bindings/detail_carbon_binding.dart';
 import '../modules/detail_carbon/views/detail_carbon_view.dart';
 import '../modules/detail_sulfur/bindings/detail_sulfur_binding.dart';
@@ -65,6 +67,11 @@ class AppPages {
       name: _Paths.INFORMATION,
       page: () => const InformationView(),
       binding: InformationBinding(),
+    ),
+    GetPage(
+      name: _Paths.AIR_MONITOR,
+      page: () => const AirMonitorView(),
+      binding: AirMonitorBinding(),
     ),
   ];
 }

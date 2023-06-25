@@ -1,11 +1,7 @@
 import 'package:air_monitor/app/consntans/air_quality_index.dart';
 import 'package:get/get.dart';
 
-class HomeProvider extends GetConnect {
-  Future<Response> getWeather(double lat, double long) {
-    return get("https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=10143a053c565930cc9bbb73093f994b&units=metric&lang=id",);
-  }
-
+class AirMonitorProvider extends GetConnect {
   Future<Response> getAqi() {
     return get("https://backend.thinger.io/v3/users/KelasKilat/devices/AirQuality/resources/AQI",headers: {
       "Authorization":bearerToken,
@@ -32,6 +28,24 @@ class HomeProvider extends GetConnect {
 
   Future<Response> getCO2() {
     return get("https://backend.thinger.io/v3/users/KelasKilat/devices/AirQuality/resources/CO2",headers: {
+      "Authorization":bearerToken,
+    });
+  }
+
+  Future<Response> getNH3() {
+    return get("https://backend.thinger.io/v3/users/KelasKilat/devices/AirQuality/resources/NH3",headers: {
+      "Authorization":bearerToken,
+    });
+  }
+
+  Future<Response> gethPa() {
+    return get("https://backend.thinger.io/v3/users/KelasKilat/devices/AirQuality/resources/hPa",headers: {
+      "Authorization":bearerToken,
+    });
+  }
+
+  Future<Response> getAltitude() {
+    return get("https://backend.thinger.io/v3/users/KelasKilat/devices/AirQuality/resources/Altitude",headers: {
       "Authorization":bearerToken,
     });
   }

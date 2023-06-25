@@ -69,7 +69,7 @@ class AboutView extends GetView<AboutController> {
                       color: AppColor.main3,
                     ),
                     Text(
-                      "aplikasi monitoring kadar polusi udara berbasis Internet of Things yang terkoneksi dengan perangkat anda (NB: Bisa diedit atau ditambahkan lagi nanti)",
+                      "aplikasi monitoring kadar polusi udara berbasis Internet of Things yang terkoneksi dengan perangkat anda",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.w,

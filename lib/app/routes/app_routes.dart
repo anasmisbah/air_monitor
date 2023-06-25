@@ -13,6 +13,7 @@ abstract class Routes {
   static const DETAIL_TEMPERATURE = _Paths.DETAIL_TEMPERATURE;
   static const ABOUT = _Paths.ABOUT;
   static const INFORMATION = _Paths.INFORMATION;
+  static const AIR_MONITOR = _Paths.AIR_MONITOR;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const DETAIL_TEMPERATURE = '/detail-temperature';
   static const ABOUT = '/about';
   static const INFORMATION = '/information';
+  static const AIR_MONITOR = '/air-monitor';
 }

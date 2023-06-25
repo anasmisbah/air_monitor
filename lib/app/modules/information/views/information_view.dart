@@ -63,7 +63,7 @@ class InformationView extends GetView<InformationController> {
                                     color: AppColor.white,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Image.asset(airQualityIndex.image),
+                                  child: Image.asset(airQualityIndex.image??'https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg'),
                                 ),
                                 const SizedBox(
                                   width: 8,
@@ -94,7 +94,7 @@ class InformationView extends GetView<InformationController> {
                                         height: 4,
                                       ),
                                       Text(
-                                        airQualityIndex.desc,
+                                        "${airQualityIndex.desc}",
                                         style: TextStyle(
                                           fontSize: 11.w,
                                           color: AppColor.text,

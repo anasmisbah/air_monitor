@@ -2,20 +2,25 @@ import 'package:air_monitor/app/consntans/color.dart';
 import 'package:flutter/material.dart';
 
 class AirQualityIndex {
-  final String status;
-  final String image;
-  final String value;
-  final String desc;
-  final Color color;
+  final String? status;
+  final String? image;
+  final String? value;
+  final String? desc;
+  final Color? color;
+  int? aqi;
 
   AirQualityIndex({
-    required this.status,
-    required this.image,
-    required this.value,
-    required this.desc,
-    required this.color,
+    this.status,
+    this.image,
+    this.value,
+    this.desc,
+    this.color,
+    this.aqi,
   });
 }
+
+const bearerToken =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc3Mjk5MDYsImlhdCI6MTY4NzcyMjcwNiwicm9sZSI6InVzZXIiLCJ1c3IiOiJLZWxhc0tpbGF0In0.9DL8Xkq26YH4vOXdnduT2HZex4BPAvhdoBokws7ZN-Y";
 
 List<AirQualityIndex> airQualityIndexData = [
   AirQualityIndex(
