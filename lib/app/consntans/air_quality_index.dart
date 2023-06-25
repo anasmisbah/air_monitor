@@ -7,7 +7,7 @@ class AirQualityIndex {
   final String? value;
   final String? desc;
   final Color? color;
-  int? aqi;
+  String? aqi;
 
   AirQualityIndex({
     this.status,

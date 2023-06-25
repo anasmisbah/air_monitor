@@ -77,8 +77,8 @@ class HomeController extends GetxController {
     }
   }
 
-  void setAirQuality(double aqi) {
-    switch (aqi.round()) {
+  void setAirQuality(dynamic aqi) {
+    switch (aqi) {
       case <= 50:
         airQualityIndexModel.value = airQualityIndexData[0];
         break;
@@ -96,7 +96,7 @@ class HomeController extends GetxController {
         break;
       default:
     }
-    airQualityIndexModel.value.aqi = aqi.round();
+    airQualityIndexModel.value.aqi = "${aqi}".length >= 4? "${aqi}".substring(0, 4):"${aqi}";
   }
 
   String greeting() {

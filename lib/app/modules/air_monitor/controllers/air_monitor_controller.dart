@@ -9,13 +9,13 @@ import 'package:intl/intl.dart';
 class AirMonitorController extends GetxController {
   Rx<UIState> uistate = UIState.initial.obs;
   Rx<AirQualityIndex> airQualityIndexModel = AirQualityIndex().obs;
-  RxInt altitude = 0.obs;
-  RxInt co = 0.obs;
-  RxInt co2 = 0.obs;
-  RxInt nh3 = 0.obs;
-  RxInt hpa = 0.obs;
-  RxInt hum = 0.obs;
-  RxInt temp = 0.obs;
+  var altitude = '0'.obs;
+  var co = '0'.obs;
+  var co2 = '0'.obs;
+  var nh3 = '0'.obs;
+  var hpa = '0'.obs;
+  var hum = '0'.obs;
+  var temp = '0'.obs;
 
   RxString lastUpdate = "0/0/0000 00:00:00".obs;
 
@@ -40,13 +40,28 @@ class AirMonitorController extends GetxController {
       ]);
       log(res.first.body.toString());
       setAirQuality(res[0].body);
-      altitude.value = (res[1].body);
-      co.value = (res[2].body as double).round();
-      co2.value = (res[3].body);
-      nh3.value = (res[4].body);
-      hpa.value = (res[5].body as double).round();
-      hum.value = (res[6].body as double).round();
-      temp.value = (res[7].body as double).round();
+
+      altitude.value = "${res[1].body}".length >= 4
+          ? "${res[1].body}".substring(0, 4)
+          : "${res[1].body}";
+      co.value = "${res[2].body}".length >= 4
+          ? "${res[2].body}".substring(0, 4)
+          : "${res[2].body}";
+      co2.value = "${res[3].body}".length >= 4
+          ? "${res[3].body}".substring(0, 4)
+          : "${res[3].body}";
+      nh3.value = "${res[4].body}".length >= 4
+          ? "${res[4].body}".substring(0, 4)
+          : "${res[4].body}";
+      hpa.value = "${res[5].body}".length >= 4
+          ? "${res[5].body}".substring(0, 4)
+          : "${res[5].body}";
+      hum.value = "${res[6].body}".length >= 4
+          ? "${res[6].body}".substring(0, 4)
+          : "${res[6].body}";
+      temp.value = "${res[7].body}".length >= 4
+          ? "${res[7].body}".substring(0, 4)
+          : "${res[7].body}";
 
       lastUpdate.value =
           DateFormat('dd/MM/yyyy HH:mm:ss').format(DateTime.now());
@@ -57,8 +72,8 @@ class AirMonitorController extends GetxController {
     }
   }
 
-  void setAirQuality(double aqi) {
-    switch (aqi.round()) {
+  void setAirQuality(dynamic aqi) {
+    switch (aqi) {
       case <= 50:
         airQualityIndexModel.value = airQualityIndexData[0];
         break;
@@ -76,6 +91,7 @@ class AirMonitorController extends GetxController {
         break;
       default:
     }
-    airQualityIndexModel.value.aqi = aqi.round();
+    airQualityIndexModel.value.aqi =
+        "${aqi}".length >= 4 ? "${aqi}".substring(0, 4) : "${aqi}";
   }
 }
